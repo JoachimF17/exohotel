@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,5 +26,11 @@ public class Gerant
 
     @Column(name = "gerant_prenom", nullable = false, length = 50)
     private String prenom;
+
+    @Column(name = "gerant_debut_carriere", nullable = false)
+    private LocalDate debutCarriere;
+
+    @OneToOne
+    private Hotel hotel;
 
 }

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,4 +29,10 @@ public class Hotel
 
     @Column(name = "hotel_adresse", nullable = false)
     private String adresse;
+
+    @OneToOne(mappedBy = "hotel")
+    private Gerant gerant;
+
+    @OneToMany(mappedBy = "hotel")
+    private List<Chambre> chambres;
 }

@@ -26,4 +26,6 @@ public class Client
     @Column(name = "client_prenom", nullable = false, length = 50)
     private String prenom;
 
+    @ManyToMany
+    private Chambre chambre;
 }
