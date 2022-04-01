@@ -18,7 +18,7 @@ public class Gerant
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "gerant_id", nullable = false)
+    @Column(name = "gerant_id", nullable = false, columnDefinition = "INT(11)")
     private Long id;
 
     @Column(name = "gerant_nom", nullable = false, length = 50)
@@ -31,6 +31,7 @@ public class Gerant
     private LocalDate debutCarriere;
 
     @OneToOne
+    @JoinColumn(name = "hotel_id")
     private Hotel hotel;
 
 }

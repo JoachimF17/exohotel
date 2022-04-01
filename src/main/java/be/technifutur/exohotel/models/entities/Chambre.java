@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,7 +17,7 @@ import javax.persistence.*;
 public class Chambre
 {
     @Id
-    @Column(name = "chambre_num", nullable = false)
+    @Column(name = "chambre_num", nullable = false, columnDefinition = "INT(11)")
     private Long id;
 
     @Column(name = "chambre_a_tele", nullable = false)
@@ -32,8 +33,9 @@ public class Chambre
     private double prix;
 
     @ManyToOne
+    @JoinColumn(name = "hotel_id")
     private Hotel hotel;
 
-    @ManyToMany(mappedBy = "chambre")
-    private Client client;
+    @ManyToMany(mappedBy = "chambres")
+    private List<Client> clients;
 }

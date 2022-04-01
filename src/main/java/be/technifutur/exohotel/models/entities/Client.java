@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,7 +18,7 @@ public class Client
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "client_id", nullable = false)
+    @Column(name = "client_id", nullable = false, columnDefinition = "INT(11)")
     private Long id;
 
     @Column(name = "client_nom", nullable = false, length = 50)
@@ -27,5 +28,5 @@ public class Client
     private String prenom;
 
     @ManyToMany
-    private Chambre chambre;
+    private List<Chambre> chambres;
 }

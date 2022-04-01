@@ -18,7 +18,7 @@ public class Hotel
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "hotel_id", nullable = false)
+    @Column(name = "hotel_id", nullable = false, columnDefinition = "INT(11)")
     private Long id;
 
     @Column(name = "hotel_etoiles", nullable = false)
@@ -31,6 +31,7 @@ public class Hotel
     private String adresse;
 
     @OneToOne(mappedBy = "hotel")
+    @JoinColumn(name = "gerant_id")
     private Gerant gerant;
 
     @OneToMany(mappedBy = "hotel")
