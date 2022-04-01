@@ -28,5 +28,13 @@ public class Client
     private String prenom;
 
     @ManyToMany
+    @JoinTable(name = "visite",
+            joinColumns = @JoinColumn(name = "visiteur_id"),
+            inverseJoinColumns = @JoinColumn(name = "chambre_num"),
+            uniqueConstraints = @UniqueConstraint(
+                    name = "PK_visiteur_chambre",
+                    columnNames = {"visiteur_id", "chambre_num"}
+            )
+    )
     private List<Chambre> chambres;
 }

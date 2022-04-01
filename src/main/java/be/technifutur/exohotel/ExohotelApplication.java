@@ -54,6 +54,16 @@ public class ExohotelApplication {
 				null
 		);
 
+		Chambre chambre1 = new Chambre(
+				22L,
+				true,
+				false,
+				true,
+				22.17,
+				null,
+				null
+		);
+
 		Client client = new Client(
 				0L,
 				"Dupond",
@@ -63,18 +73,22 @@ public class ExohotelApplication {
 
 		hotel = hotelRepository.save(hotel);
 		chambre = chambreRepository.save(chambre);
+		chambre1 = chambreRepository.save(chambre1);
 		client = clientRepository.save(client);
 		gerant = gerantRepository.save(gerant);
 
 		chambre.setHotel(hotel);
-		hotel.setChambres(List.of(chambre));
-		client.setChambres(List.of(chambre));
+		chambre1.setHotel(hotel);
+		hotel.setChambres(List.of(chambre, chambre1));
+		client.setChambres(List.of(chambre, chambre1));
 		chambre.setClients(List.of(client));
+		chambre1.setClients(chambre.getClients());
 		hotel.setGerant(gerant);
 		gerant.setHotel(hotel);
 
 		hotelRepository.save(hotel);
 		chambreRepository.save(chambre);
+		chambreRepository.save(chambre1);
 		clientRepository.save(client);
 		gerantRepository.save(gerant);
 	}
